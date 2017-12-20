@@ -31,6 +31,13 @@ var app = app || {};
     .catch(errorCallback);
   };
 
+  Book.fetchOne = callback => {
+    $.get(`${__API_URL__}/api/v1/books:id`)
+    .then(Book.loadAll)
+    .then(callback)
+    .catch(errorCallback);
+  };
+
   function errorCallback(err) {
     console.error(err);
     module.errorView.initErrorPage(err);
