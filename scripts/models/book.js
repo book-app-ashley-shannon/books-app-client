@@ -19,6 +19,13 @@ var app = app || {};
 
   Book.all = [];
 
+  Book.one = [];
+
+  Book.loadOne = ele => {
+    Book.one = new Book(ele);
+    console.log(Book.one);
+  };
+
   Book.loadAll = rows => {
     rows.sort((a, b) => b.title - a.title);
     Book.all = rows.map(ele => new Book(ele));
@@ -31,8 +38,15 @@ var app = app || {};
     .catch(errorCallback);
   };
 
-  function errorCallback(err) {
-    console.error(err);
+  Book.fetchOne = (callback, id) => {
+    $.get(`${__API_URL__}/api/v1/books/${id}`)
+    .then(Book.loadOne)
+    .then(callback)
+    .catch(errorCallback);
+  };
+
+  function errorCallback(err,msg) {
+    console.log(err);
     module.errorView.initErrorPage(err);
   };
   module.Book = Book;
