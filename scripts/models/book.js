@@ -11,8 +11,10 @@ var app = app || {};
   };
 
   Book.prototype.toHtml = function() {
-    var template = Handlebars.compile($('#book-list-template').html());
-    books.forEach(ele => $('section').append(template(ele)));
+    // var template = Handlebars.compile($('#book-list-template').html());
+    // Book.forEach(ele => $('section').append(template(ele)));
+
+    return Handlebars.compile($('#book-list-template').text())(this);
   };
 
   Book.all = [];
