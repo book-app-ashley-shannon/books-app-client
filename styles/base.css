@@ -1,0 +1,33 @@
+html {
+    margin: 5%;
+}
+
+header {
+    width: 90%;
+    padding: 10px;
+    background: gray;
+    color: darkgray;
+    margin-bottom: 0px;
+}
+
+main {
+    width: 95%;
+    text-align: center;
+    margin-top: 0px;
+}
+
+#book-list {
+    background: darkgrey;
+    margin-top: 0px;
+}
+
+#book-list li {
+    width: 80%;
+    background: gray;
+    margin: 1%;
+    list-style: none;
+}
+
+#book-list li div div {
+    text-align: left;
+}
