@@ -8,9 +8,8 @@ var app = app || {};
     bookView.initIndexPage = err => {
       $('.container').hide();
       $('.book-view').show();
-      module.Book.all.map(ele => $('#book-list').append(ele.toHtml()));
-      let bookid;
-      $('.detail-view').on('click', 'button.db', app.bookView.getBookid);
+      module.Book.all.map(ele => $('#book-list').append(ele.toHtml('book-list-template')));
+      // $('.detail-view').on('click', 'button.db', app.bookView.getBookid);
     };
 
     bookView.getBookid = () => {
@@ -20,9 +19,11 @@ var app = app || {};
 
     bookView.initDetailPage = err => {
       $('.container').hide();
+      $('.detail-view').empty();
       $('.detail-view').show();
-      let template = Handlebars.compile($('#detail-template').text());
-      $('.detail-view').append(template(err));
+      module.Book.all.map(ele => $('.detail-view').append(ele.toHtml('detail-template')));
+      // let template = Handlebars.compile($('#detail-template').text());
+      // $('.detail-view').append(template(err));
     };
     module.bookView = bookView;
 })(app);

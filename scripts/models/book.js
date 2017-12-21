@@ -10,21 +10,14 @@ var app = app || {};
     Object.keys(raw).map(key => this[key] = raw[key]);
   };
 
-  Book.prototype.toHtml = function() {
+  Book.prototype.toHtml = function(template) {
     // var template = Handlebars.compile($('#book-list-template').html());
     // Book.forEach(ele => $('section').append(template(ele)));
 
-    return Handlebars.compile($('#book-list-template').text())(this);
+    return Handlebars.compile($(`#${template}`).text())(this);
   };
 
   Book.all = [];
-
-  Book.one = [];
-
-  Book.loadOne = ele => {
-    Book.one = new Book(ele);
-    console.log(Book.one);
-  };
 
   Book.loadAll = rows => {
     rows.sort((a, b) => b.title - a.title);
@@ -40,7 +33,7 @@ var app = app || {};
 
   Book.fetchOne = (callback, id) => {
     $.get(`${__API_URL__}/api/v1/books/${id}`)
-    .then(Book.loadOne)
+    .then(Book.loadAll)
     .then(callback)
     .catch(errorCallback);
   };
