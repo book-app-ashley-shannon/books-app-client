@@ -31,3 +31,47 @@ main {
 #book-list li div div {
     text-align: left;
 }
+
+.form-view {
+  margin: 10%;
+}
+
+form {
+  text-align: left;
+  background: darkgrey;
+}
+
+label, input {
+  display: block;
+}
+
+.hamburger{
+  width: 7%;
+  position: absolute;
+  top: 16%;
+  right: 14%;
+}
+
+.main-nav input[type=checkbox] {
+  display: none;
+}
+
+.main-nav input[type=checkbox]:checked ~ .menu {
+  display: block;
+  width: 100%;
+}
+
+.show-menu{
+  cursor: pointer;
+}
+
+.main-nav ul {
+  position: static;
+  display:none;
+}
+
+.main-nav li{
+  width: 80%;
+  border: 1px lightgrey solid;
+  padding: 1%;
+}
