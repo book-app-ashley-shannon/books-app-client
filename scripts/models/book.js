@@ -38,6 +38,11 @@ var app = app || {};
     .catch(errorCallback);
   };
 
+  Book.insertRecord = function() { 
+    $.post('/api/v1/books', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
+    .then(console.log);
+  };
+
   function errorCallback(err,msg) {
     console.log(err);
     module.errorView.initErrorPage(err);

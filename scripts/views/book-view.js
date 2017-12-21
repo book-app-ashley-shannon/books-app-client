@@ -12,10 +12,24 @@ var app = app || {};
       // $('.detail-view').on('click', 'button.db', app.bookView.getBookid);
     };
 
-    // bookView.initFormPage = err => {
-    //   $('.container').hide();
-    //   $('.form-view').show();
-    // };
+    bookView.submit = event => {
+      event.preventDefault();
+      let book = new Book ({
+        title: $('#title').val(),
+        author: $('#author').val(),
+        isbn: $('#isbn').val(),
+        image_url: $('#image_url').val(),
+        description: $('#description').val()
+      });
+      book.insertRecord();
+    };
+
+    bookView.initFormPage = err => {
+      $('.container').hide();
+      $('.form-view').show();
+       
+      $('.form').on('submit', bookView.submit);
+    };
 
     bookView.initDetailPage = err => {
       $('.container').hide();
@@ -28,4 +42,4 @@ var app = app || {};
     module.bookView = bookView;
 })(app);
 
-$(() => app.Book.fetchAll(app.bookView.initIndexPage));
+// $(() => app.Book.fetchAll(app.bookView.initIndexPage));
