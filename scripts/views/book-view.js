@@ -12,10 +12,10 @@ var app = app || {};
       // $('.detail-view').on('click', 'button.db', app.bookView.getBookid);
     };
 
-    bookView.getBookid = () => {
-      console.log(this);
-      app.Book.fetchOne(app.bookView.initDetailPage);
-    };
+    // bookView.initFormPage = err => {
+    //   $('.container').hide();
+    //   $('.form-view').show();
+    // };
 
     bookView.initDetailPage = err => {
       $('.container').hide();
