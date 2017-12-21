@@ -15,7 +15,7 @@
           <div>
             <h2>{{title}}</h2>
             <p>{{author}}</p>
-            <button class="db" id="{{book_id}}" type="button">DETAILS</button>
+            <button id="{{book_id}}" type="button"><a href="/books/{{book_id}}">DETAILS</a></button>
           </div>
         </div>
       </li>
@@ -57,9 +57,11 @@
       </section>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="scripts/models/book.js"></script>
     <script src="scripts/views/book-view.js"></script>
     <script src="scripts/views/error-view.js"></script>
+    <script src="scripts/views/routes.js"></script>
   </body>
 </html>
