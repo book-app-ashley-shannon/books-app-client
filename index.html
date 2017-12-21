@@ -38,10 +38,12 @@
   <body>
     <header>
       <h1>BOOKS</h1>
-      <nav>
-        <ul>
-          <li><a href="/">All Books</a></li>
-          <li><a href="/books/new">Add a New Book</a></li>
+      <nav class="main-nav">
+        <label for="show-nav" class="show-nav"> <img class="hamburger" src="assets/hamburger_icon.svg.png"></label>
+      <input type = "checkbox" id="show-nav">
+        <ul class="menu">
+          <li class="tab"><a href="/">All Books</a></li>
+          <li class="tab"><a href="/books/new">Add a New Book</a></li>
        </ul>
      </nav>
     </header>
@@ -64,10 +66,10 @@
           <label>Isbn</label>
           <input id="isbn" type="text" placeholder="isbn"></input>
           <label>Image URL</label>
-          <input id="image-url" type="text" placeholder="image url"></input>
+          <input id="image_url" type="text" placeholder="image url"></input>
           <label>Description</label>
           <input id="description" type="text" placeholder="description"></input>
-          <button type="submit"><a href="/">SUBMIT</a></button>
+          <button type="submit">SUBMIT</button>
         </form>
       </section>
     </main>

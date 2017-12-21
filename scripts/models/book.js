@@ -38,9 +38,21 @@ var app = app || {};
     .catch(errorCallback);
   };
 
-  Book.insertRecord = function() { 
-    $.post('/api/v1/books', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
-    .then(console.log);
+  Book.submit = event => {
+    event.preventDefault();
+    let book = new Book ({
+      title: $('#title').val(),
+      author: $('#author').val(),
+      isbn: $('#isbn').val(),
+      image_url: $('#image_url').val(),
+      description: $('#description').val()
+    });
+    book.insertRecord();
+  };
+
+  Book.prototype.insertRecord = function() {
+    $.post(`${__API_URL__}/api/v1/books`, {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
+    .then(page('/'));
   };
 
   function errorCallback(err,msg) {
