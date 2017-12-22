@@ -20,14 +20,6 @@ var app = app || {};
       $('.form').on('submit', callback);
     };
 
-    bookView.prototype.initUpdatePage = callback => {
-      $('.container').hide();
-      $('#book-list').empty();
-      $('.form-view').show();
-
-      $(`#title`).value.replace()
-    }
-
     bookView.initDetailPage = err => {
       $('.container').hide();
       $('#book-list').empty();
@@ -44,10 +36,23 @@ var app = app || {};
 
       $('.detail-view').on('click', '.update', function(event) {
        event.preventDefault();
-       bookView.initFormPage(.update);
-  
-      });
+       app.Book.fetchOne(app.bookView.initUpdatePage, this.id);
+     });
     };
+
+    bookView.initUpdatePage = () => {
+      $('.container').hide();
+      $('#book-list').empty();
+      $('.form-view').show();
+
+      $('#title').val(app.Book.all.title);
+      $('#author').val(app.Book.all.author);
+      $('#isbn').val(app.Book.all.isbn);
+      $('#image_url').val(app.Book.all.image_url);
+      $('#description').val(app.Book.all.description);
+      console.log(app.Book.all);
+    };
+
     module.bookView = bookView;
 })(app);
 
