@@ -55,6 +55,14 @@ var app = app || {};
     .then(page('/'));
   };
 
+  Book.removeOne = id => {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${id}`,
+      method: 'DELETE'
+    })
+    .then(() => page('/'))
+  };
+
   function errorCallback(err,msg) {
     console.log(err);
     module.errorView.initErrorPage(err);
