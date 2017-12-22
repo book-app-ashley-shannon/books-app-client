@@ -63,31 +63,19 @@ var app = app || {};
     .then(() => page('/'))
   };
 
-  // Book.prototype.updateRecord = ele => {
-  //   $.ajax({
-  //     url: `${__API_URL__}/api/v1/books/${ele.id}`,
-  //     method: 'PUT',
-  //     data: {
-  //       title: 
-  //       author:
-  //       isbn:
-  //       image_url:
-  //       description:
-  //     }
-  //   })
-  // }
-
-  Book.prototype.update = event => {
-    event.preventDefault();
-    let book = new Book ({
-      title: $('#title').val(),
-      author: $('#author').val(),
-      isbn: $('#isbn').val(),
-      image_url: $('#image_url').val(),
-      description: $('#description').val()
+  Book.updateRecord = book => {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${book.id}`,
+      method: 'PUT',
+      data: {
+        title: book.title,
+        author: book.author,
+        isbn: book.isbn,
+        image_url: book.image_url,
+        description: book.description
+      }
     });
-    console.log(this);
-  }
+  };
 
   function errorCallback(err,msg) {
     console.log(err);
