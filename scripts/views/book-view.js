@@ -12,13 +12,21 @@ var app = app || {};
       // $('.detail-view').on('click', 'button.db', app.bookView.getBookid);
     };
 
-    bookView.initFormPage = () => {
+    bookView.initFormPage = callback => {
       $('.container').hide();
       $('#book-list').empty();
       $('.form-view').show();
 
-      $('.form').on('submit', app.Book.submit);
+      $('.form').on('submit', callback);
     };
+
+    bookView.prototype.initUpdatePage = callback => {
+      $('.container').hide();
+      $('#book-list').empty();
+      $('.form-view').show();
+
+      $(`#title`).value.replace()
+    }
 
     bookView.initDetailPage = err => {
       $('.container').hide();
@@ -29,8 +37,15 @@ var app = app || {};
       // let template = Handlebars.compile($('#detail-template').text());
       // $('.detail-view').append(template(err));
       $('.detail-view').on('click', '.delete', function(event) {
+        event.preventDefault();
         module.Book.removeOne(this.id)
         .then(() => page('/'));
+      });
+
+      $('.detail-view').on('click', '.update', function(event) {
+       event.preventDefault();
+       bookView.initFormPage(.update);
+  
       });
     };
     module.bookView = bookView;
