@@ -55,13 +55,39 @@ var app = app || {};
     .then(page('/'));
   };
 
-  Book.removeOne = id => {
+  Book.prototype.removeOne = id => {
     $.ajax({
       url: `${__API_URL__}/api/v1/books/${id}`,
       method: 'DELETE'
     })
     .then(() => page('/'))
   };
+
+  // Book.prototype.updateRecord = ele => {
+  //   $.ajax({
+  //     url: `${__API_URL__}/api/v1/books/${ele.id}`,
+  //     method: 'PUT',
+  //     data: {
+  //       title: 
+  //       author:
+  //       isbn:
+  //       image_url:
+  //       description:
+  //     }
+  //   })
+  // }
+
+  Book.prototype.update = event => {
+    event.preventDefault();
+    let book = new Book ({
+      title: $('#title').val(),
+      author: $('#author').val(),
+      isbn: $('#isbn').val(),
+      image_url: $('#image_url').val(),
+      description: $('#description').val()
+    });
+    console.log(this);
+  }
 
   function errorCallback(err,msg) {
     console.log(err);
